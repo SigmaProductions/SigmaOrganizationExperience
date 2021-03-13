@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["SigmaOrganizationExperience.ApiGateway/SigmaOrganizationExperience.ApiGateway.csproj", "SigmaOrganizationExperience.ApiGateway/"]
-RUN dotnet restore "SigmaOrganizationExperience.ApiGateway/SigmaOrganizationExperience.ApiGateway.csproj"
+COPY ["SOE.ApiGateway/SOE.ApiGateway.csproj", "SOE.ApiGateway/"]
+RUN dotnet restore "SOE.ApiGateway/SOE.ApiGateway.csproj"
 COPY . .
-WORKDIR "/src/SigmaOrganizationExperience.ApiGateway"
-RUN dotnet build "SigmaOrganizationExperience.ApiGateway.csproj" -c Release -o /app/build
+WORKDIR "/src/SOE.ApiGateway"
+RUN dotnet build "SOE.ApiGateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "SigmaOrganizationExperience.ApiGateway.csproj" -c Release -o /app/publish
+RUN dotnet publish "SOE.ApiGateway.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "SigmaOrganizationExperience.ApiGateway.dll"]
+ENTRYPOINT ["dotnet", "SOE.ApiGateway.dll"]

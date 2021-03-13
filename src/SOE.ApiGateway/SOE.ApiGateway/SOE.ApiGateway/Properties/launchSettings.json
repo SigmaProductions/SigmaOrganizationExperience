@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:56530",
-      "sslPort": 44378
+      "applicationUrl": "http://localhost:60601",
+      "sslPort": 44397
     }
   },
   "profiles": {
@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "SigmaOrganizationExperience.ApiGateway": {
+    "SOE.ApiGateway": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

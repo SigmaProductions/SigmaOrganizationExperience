@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SigmaOrganizationExperience.ApiGateway
+namespace SOE.ApiGateway
 {
     public class Startup
     {
