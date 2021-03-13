@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SigmaOrganizationExperience.UserService
+namespace SOE.UserService
 {
     public class Program
     {

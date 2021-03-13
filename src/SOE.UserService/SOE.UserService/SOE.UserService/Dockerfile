@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["SigmaOrganizationExperience.UserService/SigmaOrganizationExperience.UserService.csproj", "SigmaOrganizationExperience.UserService/"]
-RUN dotnet restore "SigmaOrganizationExperience.UserService/SigmaOrganizationExperience.UserService.csproj"
+COPY ["SOE.UserService/SOE.UserService.csproj", "SOE.UserService/"]
+RUN dotnet restore "SOE.UserService/SOE.UserService.csproj"
 COPY . .
-WORKDIR "/src/SigmaOrganizationExperience.UserService"
-RUN dotnet build "SigmaOrganizationExperience.UserService.csproj" -c Release -o /app/build
+WORKDIR "/src/SOE.UserService"
+RUN dotnet build "SOE.UserService.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "SigmaOrganizationExperience.UserService.csproj" -c Release -o /app/publish
+RUN dotnet publish "SOE.UserService.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "SigmaOrganizationExperience.UserService.dll"]
+ENTRYPOINT ["dotnet", "SOE.UserService.dll"]
